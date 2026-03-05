@@ -1,21 +1,44 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+#################################################
+# Compiled output
+#################################################
+dist/
+tmp/
+out-tsc/
+bazel-out/
+*.tsbuildinfo
 
-# compiled output
-/dist
-/tmp
-/out-tsc
-# Only exists if Bazel was run
-/bazel-out
+#################################################
+# Angular
+#################################################
+.angular/cache/
+.angular/
 
-# dependencies
-/node_modules
+#################################################
+# Node
+#################################################
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# profiling files
-chrome-profiler-events*.json
-speed-measure-plugin*.json
+#################################################
+# Environment variables
+#################################################
+.env
+.env.*
+!.env.example
 
+#################################################
+# Tests
+#################################################
+coverage/
+__screenshots__/
+testem.log
+
+#################################################
 # IDEs and editors
-/.idea
+#################################################
+.idea/
 .project
 .classpath
 .c9/
@@ -23,24 +46,26 @@ speed-measure-plugin*.json
 .settings/
 *.sublime-workspace
 
-# IDE - VSCode
+#################################################
+# VSCode
+#################################################
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.history/*
+.history/
 
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
+#################################################
+# Miscellaneous
+#################################################
+.sass-cache/
+connect.lock
+libpeerconnection.log
+typings/
 
-# System Files
+#################################################
+# System files
+#################################################
 .DS_Store
 Thumbs.db
