@@ -1,7 +1,16 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
   "version": 1,
   "newProjectRoot": "projects",
+  "schematics": {
+    "@schematics/angular:component": {
+      "flat": false,
+      "prefix": "app"
+    }
+  },
   "projects": {
     "africa-trust-frontend": {
       "projectType": "application",
