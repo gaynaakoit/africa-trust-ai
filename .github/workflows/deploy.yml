@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
+    
       # 1️⃣ Checkout du repo pour la build des images Docker
       - name: Checkout
         uses: actions/checkout@v3
@@ -52,19 +52,17 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
 
-            # Supprime complètement l'ancien dossier pour repartir frais
-            rm -rf /root/africa-trust-ai/*
-
-            # Clone du repo main à zéro
-            git clone --branch main git@github.com:YOUR_USER/africa-trust-ai.git /root/africa-trust-ai
-
             cd /root/africa-trust-ai
 
-            # Stop et supprime tous les containers existants
+            git reset --hard
+            git clean -fd
+            git pull origin main
+
+            docker pull ${{ secrets.DOCKER_USERNAME }}/africa-trust-backend:latest
+            docker pull ${{ secrets.DOCKER_USERNAME }}/africa-trust-frontend:latest
+            docker pull ${{ secrets.DOCKER_USERNAME }}/africa-trust-ai-service:latest
+
             docker compose down
+            docker compose up -d --force-recreate
 
-            # Rebuild et relance tous les services
-            docker compose up -d --build --force-recreate
-
-            # Vérifie l'état des containers
             docker compose ps
