@@ -51,18 +51,20 @@ jobs:
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-
             cd /root/africa-trust-ai
 
-            git reset --hard
-            git clean -fd
-            git pull origin main
+            # Nettoyer tout pour éviter les caches et containers anciens
+            docker compose down
+            docker compose rm -f
+            docker image prune -f
 
+            # Pull des dernières images
             docker pull ${{ secrets.DOCKER_USERNAME }}/africa-trust-backend:latest
             docker pull ${{ secrets.DOCKER_USERNAME }}/africa-trust-frontend:latest
             docker pull ${{ secrets.DOCKER_USERNAME }}/africa-trust-ai-service:latest
 
-            docker compose down
+            # Relancer les containers avec rebuild forcé
             docker compose up -d --force-recreate
 
+            # Vérifier l’état
             docker compose ps
