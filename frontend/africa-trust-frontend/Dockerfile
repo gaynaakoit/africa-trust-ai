@@ -11,7 +11,7 @@ COPY . .
 CMD ["npx", "ng", "serve", "--host", "0.0.0.0", "--port", "4200"]
 
 # ---------- BUILD ----------
-FROM node:20-alpine AS build
+FROM node:14-alpine AS build
 
 WORKDIR /app
 
