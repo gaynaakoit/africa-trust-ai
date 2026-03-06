@@ -60,6 +60,6 @@ jobs:
             docker pull ${{ secrets.DOCKER_USERNAME }}/africa-trust-ai-service:latest
 
             docker compose down
-            docker compose up -d
+            docker compose up -d --force-recreate
 
             docker compose ps
