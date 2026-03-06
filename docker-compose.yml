@@ -1,0 +1,70 @@
+version: "3.9"
+
+services:
+
+  postgres:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: SUPER_STRONG_PASSWORD
+      POSTGRES_DB: africatrust
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  redis:
+    image: redis:7
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  ai-service:
+    image: warriorkod/africa-trust-ai-service:latest
+    restart: unless-stopped
+    networks:
+      - app-network
+    expose:
+      - "8000"
+
+  backend:
+    image: warriorkod/africa-trust-backend:latest
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - redis
+      - ai-service
+    environment:
+      DATABASE_URL: postgres://postgres:SUPER_STRONG_PASSWORD@postgres:5432/africatrust
+      REDIS_HOST: redis
+      AI_SERVICE_URL: http://ai-service:8000
+    networks:
+      - app-network
+    ports:
+      - "3000:3000"
+    entrypoint: >
+      sh -c "
+      apk add --no-cache bash curl &&
+      until nc -z postgres 5432; do echo Waiting for Postgres; sleep 2; done &&
+      until nc -z redis 6379; do echo Waiting for Redis; sleep 2; done &&
+      until nc -z ai-service 8000; do echo Waiting for AI Service; sleep 2; done &&
+      node dist/main.js
+      "
+
+  frontend:
+    image: warriorkod/africa-trust-frontend:latest
+    restart: unless-stopped
+    depends_on:
+      - backend
+    networks:
+      - app-network
+    ports:
+      - "80:80"
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
