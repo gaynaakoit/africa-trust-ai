@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    
+
       # 1️⃣ Checkout du repo pour la build des images Docker
       - name: Checkout
         uses: actions/checkout@v3
@@ -53,17 +53,13 @@ jobs:
           script: |
             cd /root/africa-trust-ai
 
-            # Nettoyer tout pour éviter les caches et containers anciens
-            docker compose down
-            docker compose rm -f
-            docker image prune -f
+            # Stop et supprime tous les containers existants
+            docker compose down --remove-orphans
 
-            # Pull des dernières images
-            docker pull ${{ secrets.DOCKER_USERNAME }}/africa-trust-backend:latest
-            docker pull ${{ secrets.DOCKER_USERNAME }}/africa-trust-frontend:latest
-            docker pull ${{ secrets.DOCKER_USERNAME }}/africa-trust-ai-service:latest
+            # Pull des dernières images depuis Docker Hub
+            docker compose pull
 
-            # Relancer les containers avec rebuild forcé
+            # Relancer les containers avec rebuild forcé et pull toujours
             docker compose up -d --force-recreate --pull always
 
             # Vérifier l’état
