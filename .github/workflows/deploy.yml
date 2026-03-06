@@ -64,7 +64,7 @@ jobs:
             docker pull ${{ secrets.DOCKER_USERNAME }}/africa-trust-ai-service:latest
 
             # Relancer les containers avec rebuild forcé
-            docker compose up -d --force-recreate
+            docker compose up -d --force-recreate --pull always
 
             # Vérifier l’état
             docker compose ps
