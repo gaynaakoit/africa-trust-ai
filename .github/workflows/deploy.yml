@@ -59,16 +59,6 @@ jobs:
             # Pull des dernières images depuis Docker Hub
             docker compose pull
 
-            # Générer / renouveler le certificat HTTPS
-            docker compose run --rm certbot certonly \
-            --webroot \
-            --webroot-path=/var/www/certbot \
-            -d trust-ai.gaynaakoit.com \
-            -d www.trust-ai.gaynaakoit.com \
-            --email admin@gaynaakoit.com \
-            --agree-tos \
-            --no-eff-email
-
             # Relancer les containers avec rebuild forcé et pull toujours
             docker compose up -d --force-recreate --pull always
 
