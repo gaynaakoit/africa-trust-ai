@@ -53,6 +53,9 @@ jobs:
           script: |
             cd /root/africa-trust-ai
 
+            # récupérer les derniers changements du repo
+            git pull origin main
+
             # Stop et supprime tous les containers existants
             docker compose down --remove-orphans
 
