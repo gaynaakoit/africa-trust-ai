@@ -60,16 +60,14 @@ jobs:
             docker compose pull
 
             # Générer / renouveler le certificat HTTPS
-            docker run --rm \
-              -v /root/africa-trust-ai/certbot-etc:/etc/letsencrypt \
-              -v /root/africa-trust-ai/certbot-var:/var/lib/letsencrypt \
-              -v /root/africa-trust-ai/frontend-data:/usr/share/nginx/html \
-              certbot/certbot certonly --webroot \
-              --webroot-path=/usr/share/nginx/html \
-              -d trust-ai.gaynaakoit.com \
-              --email admin@gaynaakoit.com \
-              --agree-tos \
-              --non-interactive
+            docker compose run --rm certbot certonly \
+            --webroot \
+            --webroot-path=/var/www/certbot \
+            -d trust-ai.gaynaakoit.com \
+            -d www.trust-ai.gaynaakoit.com \
+            --email admin@gaynaakoit.com \
+            --agree-tos \
+            --no-eff-email
 
             # Relancer les containers avec rebuild forcé et pull toujours
             docker compose up -d --force-recreate --pull always
