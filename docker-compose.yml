@@ -64,8 +64,8 @@ services:
       - "443:443"  # pour HTTPS
     volumes:
       - frontend_data:/usr/share/nginx/html
-      - certbot_etc:/etc/letsencrypt
-      - certbot_var:/var/lib/letsencrypt
+      - ./certbot-etc:/etc/letsencrypt
+      - ./certbot-var:/var/lib/letsencrypt
 
 networks:
   app-network:
