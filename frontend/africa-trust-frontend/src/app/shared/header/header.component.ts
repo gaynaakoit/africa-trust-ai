@@ -12,6 +12,8 @@ export class HeaderComponent {
 
   unreadCount = 3; // exemple
 
+  profileMenuOpen = false;
+
   notifications = [
     {
       title: 'Nouvelle analyse Deepfake',
@@ -45,5 +47,14 @@ export class HeaderComponent {
 
   toggleMobileMenu() {
     this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
+
+  toggleProfileMenu() {
+    this.profileMenuOpen = !this.profileMenuOpen;
+  }
+
+  logout() {
+    console.log('Déconnexion...');
+    // Ajouter ici la logique réelle de déconnexion
   }
 }
