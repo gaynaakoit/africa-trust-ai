@@ -1,4 +1,4 @@
-version: "3.9"
+  version: "3.9"
 
 services:
 
@@ -52,41 +52,20 @@ services:
       node dist/main.js
       "
 
-  nginx:
-    image: nginx:latest
+  frontend:
+    image: warriorkod/africa-trust-frontend:latest
     restart: unless-stopped
     depends_on:
-      - frontend
+      - backend
     networks:
       - app-network
     ports:
       - "80:80"
-      - "443:443"
+      - "443:443"  # pour HTTPS
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
-      - frontend-data:/usr/share/nginx/html
-
-  frontend:
-    image: warriorkod/africa-trust-frontend:latest
-    restart: unless-stopped
-    networks:
-      - app-network
-    volumes:
-      - frontend-data:/usr/share/nginx/html
-
-  certbot:
-    image: certbot/certbot
-    restart: unless-stopped
-    networks:
-      - app-network
-    volumes:
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
-      - frontend-data:/usr/share/nginx/html
-    entrypoint: >
-      sh -c "trap exit TERM; while :; do certbot renew --webroot -w /usr/share/nginx/html; sleep 12h & wait $${!}; done;"
+      - frontend_data:/usr/share/nginx/html
+      - certbot_etc:/etc/letsencrypt
+      - certbot_var:/var/lib/letsencrypt
 
 networks:
   app-network:
@@ -94,6 +73,6 @@ networks:
 
 volumes:
   postgres_data:
-  certbot-etc:
-  certbot-var:
-  frontend-data:
+  certbot_etc:
+  certbot_var:
+  frontend_data:
