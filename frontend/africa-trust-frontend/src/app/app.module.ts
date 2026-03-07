@@ -11,6 +11,7 @@ import { VerifyComponent } from './features/verify/verify.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ChartsModule } from 'ng2-charts';
+import { DocumentationComponent } from './features/documentation/documentation.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ChartsModule } from 'ng2-charts';
     TrustComponent,
     VerifyComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    DocumentationComponent
   ],
   imports: [
     BrowserModule,

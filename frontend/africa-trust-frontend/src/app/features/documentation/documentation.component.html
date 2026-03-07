@@ -1,0 +1,58 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">Documentation Africa Trust AI</h1>
+    <p class="text-gray-600 mb-8">
+      Découvrez nos services d'intelligence artificielle pour la détection de deepfakes, l’authentification biométrique, le score de confiance et la signature institutionnelle. 
+      Cette documentation vous guide étape par étape pour comprendre chaque service, ses fonctionnalités et cas d’usage.
+    </p>
+  
+    <!-- Liste des services -->
+    <div class="grid md:grid-cols-2 gap-6">
+      <div *ngFor="let service of services" class="border rounded-lg p-6 hover:shadow-lg transition">
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ service.name }}</h2>
+        <p class="text-gray-600 mb-4">{{ service.description }}</p>
+        <ul class="list-disc list-inside text-gray-600 mb-4">
+          <li *ngFor="let feature of service.features">{{ feature }}</li>
+        </ul>
+        <a [routerLink]="service.link" class="text-blue-600 hover:underline font-medium">Voir plus</a>
+      </div>
+    </div>
+  
+    <!-- Exemple API / intégration (placeholder pour chaque service) -->
+    <div class="mt-12 border-t pt-8">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Comment intégrer nos services</h2>
+      <p class="text-gray-600 mb-6">
+        Chaque service peut être intégré via notre API. Les guides ci-dessous expliquent comment obtenir une clé API, envoyer vos requêtes et recevoir les résultats.
+      </p>
+  
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Deepfake Detection -->
+        <div class="border rounded-lg p-6 hover:shadow-lg transition">
+            <h3 class="text-lg font-medium text-gray-800 mb-2">Deepfake Detection API</h3>
+            <p class="text-gray-600 mb-4">Exemple d'appel API pour analyser une vidéo :</p>
+            <pre class="bg-gray-100 p-4 rounded text-sm text-gray-700 overflow-x-auto">
+                POST /api/deepfake
+                Headers:
+                Authorization: Bearer YOUR_API_KEY
+                Body:
+                {{ '{' }}
+                    "video_url": "https://example.com/video.mp4"
+                {{ '}' }}
+            </pre>
+        </div>
+        <!-- Liveness / Anti-Spoof -->
+        <div class="border rounded-lg p-6 hover:shadow-lg transition">
+            <h3 class="text-lg font-medium text-gray-800 mb-2">Liveness / Anti-Spoof API</h3>
+            <p class="text-gray-600 mb-4">Exemple d'appel API pour vérifier la preuve de vie :</p>
+            <pre class="bg-gray-100 p-4 rounded text-sm text-gray-700 overflow-x-auto">
+                POST /api/liveness
+                Headers:
+                  Authorization: Bearer YOUR_API_KEY
+                Body:
+                  {{ '{' }}
+                    "image": "base64_encoded_image_here"
+                  {{ '}' }}
+            </pre>
+        </div>
+      </div>
+    </div>
+  </div>
