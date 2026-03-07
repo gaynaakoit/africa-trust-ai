@@ -1,0 +1,36 @@
+<div class="flex h-screen overflow-hidden bg-gray-50">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white border-r shadow-sm">
+      <div class="px-6 py-4 font-bold text-xl text-blue-700">API Services</div>
+      <nav class="px-2 space-y-1">
+        <button *ngFor="let service of services"
+                (click)="selectService(service)"
+                [ngClass]="{'bg-blue-100 text-blue-800': selectedService === service, 'text-gray-700 hover:bg-gray-100': selectedService !== service}"
+                class="w-full text-left px-4 py-2 rounded transition flex justify-between items-center">
+          {{ service.name }}
+          <span class="text-sm text-gray-500">&gt;</span>
+        </button>
+      </nav>
+    </aside>
+  
+    <!-- Main content -->
+    <main class="flex-1 overflow-auto p-6">
+      <h1 class="text-2xl font-bold text-gray-800 mb-4">{{ selectedService.name }}</h1>
+      <p class="text-gray-600 mb-6">{{ selectedService.description }}</p>
+  
+      <div *ngFor="let endpoint of selectedService.endpoints" class="mb-8">
+        <h2 class="font-semibold text-lg text-gray-700 mb-2">{{ endpoint.method }} {{ endpoint.path }}</h2>
+        <p class="text-gray-600 mb-2">{{ endpoint.description }}</p>
+  
+        <div class="mb-2">
+          <span class="font-medium text-gray-700">Request:</span>
+          <pre class="bg-gray-100 p-4 rounded text-sm text-gray-700 overflow-x-auto">{{ endpoint.requestBody }}</pre>
+        </div>
+  
+        <div>
+          <span class="font-medium text-gray-700">Response:</span>
+          <pre class="bg-gray-100 p-4 rounded text-sm text-gray-700 overflow-x-auto">{{ endpoint.responseBody }}</pre>
+        </div>
+      </div>
+    </main>
+  </div>

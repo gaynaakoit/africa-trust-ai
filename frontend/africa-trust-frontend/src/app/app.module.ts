@@ -12,6 +12,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ChartsModule } from 'ng2-charts';
 import { DocumentationComponent } from './features/documentation/documentation.component';
+import { ApiComponent } from './features/api/api.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DocumentationComponent } from './features/documentation/documentation.c
     VerifyComponent,
     HeaderComponent,
     FooterComponent,
-    DocumentationComponent
+    DocumentationComponent,
+    ApiComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import { IdentityComponent } from './features/identity/identity.component';
 import { TrustComponent } from './features/trust/trust.component';
 import { VerifyComponent } from './features/verify/verify.component';
 import { DocumentationComponent } from './features/documentation/documentation.component';
+import { ApiComponent } from './features/api/api.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'trust', component: TrustComponent },
   { path: 'verify', component: VerifyComponent },
   { path: 'documentation', component: DocumentationComponent },
+  { path: 'api', component: ApiComponent },
 
 ];
 
