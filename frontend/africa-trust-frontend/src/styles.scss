@@ -16,3 +16,8 @@
   .animate-slideDown {
     animation: slideDown 0.2s ease-out forwards;
   }
+
+  .transition-dropdown {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform-origin: top;
+  }
