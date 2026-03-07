@@ -1,1 +1,95 @@
-<p>header works!</p>
+<header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+      
+      <!-- Logo -->
+      <div class="flex items-center">
+        <img src="assets/img/logo_africa_trust_ai.png" alt="Gaynako IT" class="h-14 w-auto"/>
+        <span class="ml-2 font-bold text-xl text-blue-700"></span>
+      </div>
+  
+      <!-- Menu desktop -->
+      <nav class="hidden md:flex space-x-6 items-center relative">
+        <a routerLink="/" class="text-gray-700 hover:text-blue-600 font-medium">Dashboard</a>
+  
+        <!-- AI Service Dropdown -->
+        <div class="relative group">
+            <button class="text-gray-700 hover:text-blue-600 font-medium flex items-center space-x-1">
+              AI Service
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+          
+            <div class="absolute left-0 mt-2 w-52 bg-white border shadow-lg rounded-md py-1 z-50
+                        opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-200">
+          
+              <a routerLink="/analysis" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">
+                Deepfake Detection
+              </a>
+          
+              <a routerLink="/identity" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">
+                Liveness / Anti-Spoof
+              </a>
+          
+              <a routerLink="/trust" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">
+                Trust Score
+              </a>
+          
+              <a routerLink="/verify" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">
+                Signature Institutionnelle
+              </a>
+          
+            </div>
+        </div>
+  
+        <a routerLink="/users" class="text-gray-700 hover:text-blue-600 font-medium">Utilisateurs</a>
+        <a routerLink="/settings" class="text-gray-700 hover:text-blue-600 font-medium">Paramètres</a>
+      </nav>
+  
+      <!-- Profile / notifications -->
+      <div class="flex items-center space-x-4">
+        <button class="relative">
+          <span class="absolute top-0 right-0 inline-block w-2 h-2 bg-red-500 rounded-full"></span>
+          <svg class="w-6 h-6 text-gray-600 hover:text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M15 17h5l-1.405-1.405M19 13V8a7 7 0 10-14 0v5l-1 1v1h16v-1l-1-1z"/>
+          </svg>
+        </button>
+        <img src="assets/img/user-avatar.png"
+        alt="User"
+        class="h-9 w-9 rounded-full cursor-pointer border border-gray-200 hover:ring-2 hover:ring-blue-400 transition"/>
+      </div>
+  
+      <!-- Hamburger menu mobile -->
+      <div class="md:hidden">
+        <button (click)="toggleMobileMenu()" class="text-gray-600 hover:text-blue-600 focus:outline-none">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  
+    <!-- Mobile menu -->
+    <div *ngIf="mobileMenuOpen" class="md:hidden bg-white shadow-md">
+      <a routerLink="/" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Dashboard</a>
+      
+      <!-- AI Modules collapsible -->
+      <div>
+        <button (click)="aiMobileMenuOpen = !aiMobileMenuOpen" class="w-full text-left px-4 py-2 flex justify-between items-center text-gray-700 hover:bg-blue-50">
+          AI Service
+          <svg [class.rotate-180]="aiMobileMenuOpen" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div *ngIf="aiMobileMenuOpen" class="pl-4">
+          <a routerLink="/analysis" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Deepfake Detection</a>
+          <a routerLink="/identity" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Liveness / Anti-Spoof</a>
+          <a routerLink="/trust" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Trust Score</a>
+          <a routerLink="/verify" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Signature Institutionnelle</a>
+        </div>
+      </div>
+  
+      <a routerLink="/users" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Utilisateurs</a>
+      <a routerLink="/settings" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Paramètres</a>
+    </div>
+  </header>
