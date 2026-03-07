@@ -1,1 +1,101 @@
-<p>dashboard works!</p>
+<div class="max-w-7xl mx-auto px-4 py-8 space-y-8">
+
+    <!-- Titre -->
+    <h1 class="text-2xl font-bold text-gray-800">
+      Africa Trust AI Dashboard
+    </h1>
+  
+    <!-- KPI Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+  
+      <div class="bg-white shadow rounded-lg p-5">
+        <p class="text-gray-500 text-sm">Deepfake Analyses</p>
+        <h2 class="text-2xl font-bold text-blue-600">1,245</h2>
+      </div>
+  
+      <div class="bg-white shadow rounded-lg p-5">
+        <p class="text-gray-500 text-sm">Identity Checks</p>
+        <h2 class="text-2xl font-bold text-green-600">892</h2>
+      </div>
+  
+      <div class="bg-white shadow rounded-lg p-5">
+        <p class="text-gray-500 text-sm">Trust Score Moyen</p>
+        <h2 class="text-2xl font-bold text-purple-600">87%</h2>
+      </div>
+  
+      <div class="bg-white shadow rounded-lg p-5">
+        <p class="text-gray-500 text-sm">Institutions</p>
+        <h2 class="text-2xl font-bold text-orange-600">12</h2>
+      </div>
+  
+    </div>
+  
+    <!-- Graphiques -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  
+        <div class="bg-white shadow rounded-lg p-5">
+            <h3 class="font-semibold mb-4">AI Analyses par jour</h3>
+          
+            <canvas
+              baseChart
+              [datasets]="lineChartData"
+              [labels]="lineChartLabels"
+              [chartType]="'line'">
+            </canvas>
+          
+          </div>
+          
+          <div class="bg-white shadow rounded-lg p-5">
+            <h3 class="font-semibold mb-4">Répartition des services</h3>
+          
+            <canvas
+              baseChart
+              [datasets]="pieChartData"
+              [labels]="pieChartLabels"
+              [chartType]="'pie'">
+            </canvas>
+          
+          </div>
+  
+    </div>
+  
+    <!-- Services AI -->
+    <div>
+  
+      <h2 class="text-xl font-semibold mb-4">Services AI</h2>
+  
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+  
+        <a routerLink="/analysis" class="bg-white shadow rounded-lg p-6 hover:shadow-lg transition">
+          <h3 class="font-bold text-blue-600">Deepfake Detection</h3>
+          <p class="text-sm text-gray-500 mt-2">
+            Analyse des vidéos et images pour détecter les deepfakes
+          </p>
+        </a>
+  
+        <a routerLink="/identity" class="bg-white shadow rounded-lg p-6 hover:shadow-lg transition">
+          <h3 class="font-bold text-green-600">Liveness / Anti-Spoof</h3>
+          <p class="text-sm text-gray-500 mt-2">
+            Vérification biométrique en temps réel
+          </p>
+        </a>
+  
+        <a routerLink="/trust" class="bg-white shadow rounded-lg p-6 hover:shadow-lg transition">
+          <h3 class="font-bold text-purple-600">Trust Score</h3>
+          <p class="text-sm text-gray-500 mt-2">
+            Score de confiance des contenus numériques
+          </p>
+        </a>
+  
+        <a routerLink="/verify" class="bg-white shadow rounded-lg p-6 hover:shadow-lg transition">
+          <h3 class="font-bold text-orange-600">Signature Institutionnelle</h3>
+          <p class="text-sm text-gray-500 mt-2">
+            Signature et vérification de documents officiels
+          </p>
+        </a>
+  
+      </div>
+  
+    </div>
+  
+  </div>
