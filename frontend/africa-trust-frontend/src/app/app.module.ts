@@ -14,6 +14,8 @@ import { ChartsModule } from 'ng2-charts';
 import { DocumentationComponent } from './features/documentation/documentation.component';
 import { ApiComponent } from './features/api/api.component';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { AnalysisService } from './core/services/analysis.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,9 +34,10 @@ import { ClickOutsideDirective } from './directives/click-outside.directive';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ChartsModule
+    ChartsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AnalysisService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
