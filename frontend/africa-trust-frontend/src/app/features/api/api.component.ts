@@ -20,6 +20,7 @@ interface ApiEndpoint {
   styleUrls: ['./api.component.scss']
 })
 export class ApiComponent {
+  sidebarOpen = false;
   services: ApiService[] = [
     {
       name: 'Deepfake Detection',
