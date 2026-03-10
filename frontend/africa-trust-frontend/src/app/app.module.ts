@@ -13,6 +13,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { ChartsModule } from 'ng2-charts';
 import { DocumentationComponent } from './features/documentation/documentation.component';
 import { ApiComponent } from './features/api/api.component';
+import { ClickOutsideDirective } from './directives/click-outside.directive';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ApiComponent } from './features/api/api.component';
     HeaderComponent,
     FooterComponent,
     DocumentationComponent,
-    ApiComponent
+    ApiComponent,
+    ClickOutsideDirective
   ],
   imports: [
     BrowserModule,

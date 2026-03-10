@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -41,6 +43,8 @@ export class HeaderComponent {
     }
   ];
 
+  constructor(private router: Router) {}
+
   toggleNotifications() {
     this.notificationsOpen = !this.notificationsOpen;
   }
@@ -56,5 +60,31 @@ export class HeaderComponent {
   logout() {
     console.log('Déconnexion...');
     // Ajouter ici la logique réelle de déconnexion
+  }
+
+  closeAllMenus() {
+    this.openAiMenu = false;
+    this.notificationsOpen = false;
+    this.profileMenuOpen = false;
+    this.aiMobileMenuOpen = false;
+    this.mobileMenuOpen = false;
+  }
+
+  closeMobileMenu() {
+    this.mobileMenuOpen = false;
+    this.aiMobileMenuOpen = false;
+  }
+
+  toggleAiMobileMenu(event: Event) {
+    event.stopPropagation(); // empêche le clickOutside de fermer le menu
+    this.aiMobileMenuOpen = !this.aiMobileMenuOpen;
+  }
+
+  ngOnInit() {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.closeAllMenus();
+      });
   }
 }
