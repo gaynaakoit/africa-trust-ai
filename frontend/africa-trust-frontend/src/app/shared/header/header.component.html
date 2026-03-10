@@ -186,14 +186,42 @@
           </svg>
         </button>
         <div *ngIf="aiMobileMenuOpen" class="pl-4">
-          <a routerLink="/analysis" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Deepfake Detection</a>
-          <a routerLink="/identity" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Liveness / Anti-Spoof</a>
-          <a routerLink="/trust" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Trust Score</a>
-          <a routerLink="/verify" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Signature Institutionnelle</a>
+            <a routerLink="/analysis"
+                class="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 space-x-2">
+            <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M12 12l9-5-9-5-9 5 9 5z"/>
+            </svg>
+            <span>Deepfake Detection</span>
+            </a>
+        
+            <a routerLink="/identity"
+                class="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 space-x-2">
+            <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5v14"/>
+            </svg>
+            <span>Liveness / Anti-Spoof</span>
+            </a>
+        
+            <a routerLink="/trust"
+                class="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 space-x-2">
+            <svg class="w-4 h-4 text-yellow-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M12 8v4l3 3"/>
+            </svg>
+            <span>Trust Score</span>
+            </a>
+        
+            <a routerLink="/verify"
+                class="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 space-x-2">
+            <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M5 13l4 4L19 7"/>
+            </svg>
+            <span>Signature Institutionnelle</span>
+            </a>       
         </div>
       </div>
-  
+      
       <a routerLink="/users" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Utilisateurs</a>
-      <a routerLink="/settings" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Paramètres</a>
+      <a routerLink="/api" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">API</a>
+      <a routerLink="/documentation" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Documentation</a>
     </div>
   </header>
