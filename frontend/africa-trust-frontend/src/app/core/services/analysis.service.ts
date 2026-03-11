@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class AnalysisService {
 
-  private apiUrl = 'http://localhost:3000/deepfake/analyze';
+  private apiUrl = 'http://217.69.2.167:3000/deepfake/analyze';
 
   constructor(private http: HttpClient) { }
 
