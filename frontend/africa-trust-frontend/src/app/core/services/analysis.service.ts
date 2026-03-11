@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class AnalysisService {
 
-  private apiUrl = 'https://trust-ai.gaynaakoit.com/deepfake/analyze';
+  private apiUrl = 'https://trust-ai.gaynaakoit.com/api/deepfake/analyze';
   
   constructor(private http: HttpClient) { }
 
