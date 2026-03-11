@@ -13,7 +13,7 @@ export class DeepfakeAnalysisService {
     try {
 
       const response = await axios.post(
-        'http://217.69.2.167:8000/detect/deepfake',
+        'http://ai-service:8000/detect/deepfake',
         form,
         {
           headers: form.getHeaders(),
